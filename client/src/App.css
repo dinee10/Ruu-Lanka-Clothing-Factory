@@ -1,0 +1,164 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+  background-image: url(../src/result.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+}
+
+.container-bh {
+  width: 1000px;
+  margin: 20px auto;
+  background-color: #fff; /* Background color for the container */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the container */
+  padding: 20px; /* Padding inside the container */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  color: #333; /* Text color for the heading */
+}
+
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 50px; /* Add some space below the table */
+}
+
+.grades-table th, .grades-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.grades-table th {
+  background-color: #f2f2f2;
+}
+
+
+
+/*
+.edit-btn {
+  background-color: #ffdb58; /* Yellow color for the Edit button /
+  color: #333; /* Text color for the Edit button /
+}
+
+.edit-btn:hover {
+  background-color: #ffea8c; /* Lighter yellow on hover /
+}
+
+.delete-btn {
+  background-color: #f44336; /* Red color for the Delete button /
+}
+
+.delete-btn:hover {
+  background-color: #dd3333; /* Darker red on hover /
+} */
+
+
+/* Container styling */
+.container-q {
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
+  
+}
+
+/* Form styling */
+.container-q form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Form group styling for each field */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+}
+
+/* Input styling */
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+/* Button styling */
+.btn1 {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Button hover effect */
+.btn1:hover {
+  background-color: #00d9ff;
+}
+
+.form-btn {
+  margin: auto;
+}
+
+.form-btn button{
+  width: 150px;
+}
+
+/* Heading styling */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 40px;
+}
+
+
+.search-bar {
+  width: 200px;
+  float: right; 
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+
+.generate {
+  text-align: center; 
+}
+
