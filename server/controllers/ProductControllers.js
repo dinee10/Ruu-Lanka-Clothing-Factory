@@ -1,106 +1,133 @@
 const Product = require("../models/ProductModel");
+const multer = require('multer');
+const path = require('path');
 
-//display
-const getAllProducts = async (req, res, next) => {
+// Set up multer for handling image uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images'); // Store images in the public/images directory
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Add a unique timestamp to the file name
+    },
+});
+
+const upload = multer({ storage: storage });
+
+// Display all products
+const getAllProducts = async (req, res) => {
     let products;
-    //get all products
-    try{
+
+    try {
         products = await Product.find();
-    }catch (err) {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error while fetching products" });
     }
 
-    //not found
-    if(!products){
-        return res.status(404).json({message:"Product not found"})
+    // If no products found
+    if (!products || products.length === 0) {
+        return res.status(404).json({ message: "No products found" });
     }
-    //display all products
-    return res.status(200).json({products});
+
+    return res.status(200).json({ products });
 };
 
-//insert
-const addProduct = async (req, res, next) => {
-    const {product_id, name, description, material, price} = req.body;
+// Insert a new product
+const addProduct = async (req, res) => {
+    const { product_id, name, description, category, price } = req.body;
+    const image = req.file ? req.file.filename : "";
 
     let product;
 
-    try{
-        product = new Product({product_id, name, description, material, price});
+    try {
+        product = new Product({ product_id, name, description, category, price, image });
         await product.save();
-    }catch (err) {
-        console.log(err)
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Unable to add product" });
     }
-    //not insert products
-    if(!product){
-        return res.status(404).json({message:"Unable to add products"});
-    }
-    return res.status(200).json({product});
-}
 
-//get by id
+    return res.status(201).json({ product });
+};
+
+// Get a product by ID
 const getById = async (req, res, next) => {
-
-    const id = req.params.id;
-
-    let product;
-
-    try{
-        product = await Product.findById(id);
-    }catch (err) {
-        console.log(err);
-    }
-    //not available products
-    if(!product){
-        return res.status(404).json({message:"Product not found"});
-    }
-    return res.status(200).json({product});
-
-}
-
-//update
-const updateProduct = async (req, res, next) => {
-    const id = req.params.id;
-    const {product_id, name, description, material, price} = req.body;
-
-    let product;
-
-    try{
-        product = await Product.findByIdAndUpdate(id, {product_id: product_id, name: name, description: description, material: material, price: price});
-        product = await product.save();
-    }catch (err) {
-        console.log(err);
-    }
-
-    //not update product
-    if(!product){
-        return res.status(404).json({message:"Product not update"});
-    }
-    return res.status(200).json({product});
-}
-
-//delete
-const deleteProduct = async (req, res, next) => {
     const id = req.params.id;
 
     let product;
 
     try {
-        product = await Product.findByIdAndDelete(id)
-    }catch (err) {
-        console.log(err);
+        product = await Product.findById(id);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error while fetching product" });
     }
 
-    //not delete product
-    if(!product){
-        return res.status(404).json({message:"Product not delete"});
+    // If product not found
+    if (!product) {
+        return res.status(404).json({ message: "Product not found" });
     }
-    return res.status(200).json({product});
+
+    return res.status(200).json({ product });
+};
+
+// Update a product
+const updateProduct = async (req, res, next) => {
+    const id = req.params.id;
+    const { product_id, name, description, category, price } = req.body;
+    let image = req.file ? req.file.filename : null;
+
+    let product;
+
+    try {
+        product = await Product.findById(id);
+
+        // If product doesn't exist
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        // Use the existing image if a new one is not provided
+        if (!image) {
+            image = product.image;
+        }
+
+        product = await Product.findByIdAndUpdate(id, { product_id: product_id, name: name, description: description, category: category, price: price, image: image }, { new: true });
+        product = await product.save()
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Unable to update product" });
+    }
+
+    return res.status(200).json({ product });
+};
+
+// Delete a product
+const deleteProduct = async (req, res) => {
+    const id = req.params.id;
+
+    let product;
+
+    try {
+        product = await Product.findByIdAndDelete(id);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error while deleting product" });
+    }
+
+    // If product not found for deletion
+    if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+    }
+
+    return res.status(200).json({ message: "Product deleted successfully", product });
 }
 
 module.exports = {
     getAllProducts,
-    addProduct,
+    addProduct: [upload.single('image'), addProduct],
     getById,
-    updateProduct,
+    updateProduct: [upload.single('image'), updateProduct],
     deleteProduct
 };
