@@ -57,7 +57,7 @@ function AddOrder() {
         }
     
         axios
-          .post("http://localhost:5174/order", orderData)
+          .post("http://localhost:5175/order", orderData)
           .then(() => {
             Swal.fire({
               title: "Successful",

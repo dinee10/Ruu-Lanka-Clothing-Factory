@@ -15,7 +15,7 @@ function AddInventory() {
     useEffect(() => {
         const fetchSupplier = async () => {
             try {
-                const response = await axios.get("http://localhost:5174/supplier");
+                const response = await axios.get("http://localhost:5175/supplier");
                 setSuppliers(response.data.suppliers || []);
             } catch (err) {
                 console.error("Failed to fetch suppliers:", err);
@@ -67,7 +67,7 @@ function AddInventory() {
         }
     
         axios
-          .post("http://localhost:5174/inventory", inventoryData)
+          .post("http://localhost:5175/inventory", inventoryData)
           .then(() => {
             Swal.fire({
               title: "Successful",

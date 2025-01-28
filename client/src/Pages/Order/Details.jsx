@@ -11,7 +11,7 @@ function Details() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5174/detail")
+    axios.get("http://localhost:5175/detail")
       .then(result => setDetails(result.data.details))
       .catch(err => console.log(err));
   }, []);
@@ -29,7 +29,7 @@ function Details() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/detail/" + id)
+        axios.delete("http://localhost:5175/detail/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({

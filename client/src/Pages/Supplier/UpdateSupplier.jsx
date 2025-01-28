@@ -15,7 +15,7 @@ function UpdateSupplier() {
 
     useEffect(() => {
         axios
-          .get("http://localhost:5174/supplier/" + id)
+          .get("http://localhost:5175/supplier/" + id)
           .then((result) => {
             const supplier = result.data.supplier;  
             setSupplier_id(supplier.supplier_id);
@@ -80,7 +80,7 @@ function UpdateSupplier() {
         }
     
         axios
-          .put("http://localhost:5174/supplier/" + id, supplierData)
+          .put("http://localhost:5175/supplier/" + id, supplierData)
           .then(() => {
             Swal.fire({
               title: "Updated",

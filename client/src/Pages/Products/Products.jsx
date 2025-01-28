@@ -14,7 +14,7 @@ function Products() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5174/product")
+    axios.get("http://localhost:5175/product")
       .then(result => setProducts(result.data.products))
       .catch(err => console.log(err));
   }, []);
@@ -32,7 +32,7 @@ function Products() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/product/" + id)
+        axios.delete("http://localhost:5175/product/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({
@@ -95,7 +95,7 @@ function Products() {
       didDrawCell: async  (data) => {
         if (data.column.index === 5) {
           const product = filteredProducts[data.row.index];
-          const imageUrl = `http://localhost:5174/${product.image}`;
+          const imageUrl = `http://localhost:5175/${product.image}`;
 
           if (product.image) {
             const base64Image = await convertImageToBase64(imageUrl);
@@ -183,7 +183,7 @@ function Products() {
               <td className="align-middle">
                 {products.image ? (
                   <img
-                    src={`http://localhost:5174/${products.image}`}
+                    src={`http://localhost:5175/${products.image}`}
                     style={{ width: "80px", height: "80px" }}
                     className="img-thumbnail"
                   />

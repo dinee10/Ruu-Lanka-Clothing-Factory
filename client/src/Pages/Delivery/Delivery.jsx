@@ -14,7 +14,7 @@ function Delivery() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5174/delivery")
+    axios.get("http://localhost:5175/delivery")
         .then(result => setDeliveries(result.data.deliveries))
         .catch(err => console.log(err));
   }, []);
@@ -30,7 +30,7 @@ function Delivery() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/delivery/" + id)
+        axios.delete("http://localhost:5175/delivery/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({

@@ -17,7 +17,7 @@ function UpdateProduct() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/product/" + id)
+      .get("http://localhost:5175/product/" + id)
       .then((result) => {
         const product = result.data.product;  // Access product details from result.data.product
         setProduct_id(product.product_id);
@@ -86,7 +86,7 @@ function UpdateProduct() {
     }
 
     axios
-      .put("http://localhost:5174/product/" + id, formData, {
+      .put("http://localhost:5175/product/" + id, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Important for file uploads
         },
@@ -200,7 +200,7 @@ function UpdateProduct() {
               <label className="form-label">Current Image</label>
               <div>
                 <img
-                  src={`http://localhost:5174/${existingImage}`}
+                  src={`http://localhost:5175/${existingImage}`}
                   style={{ width: "150px", height: "150px", objectFit: "cover" }}
                 />
               </div>

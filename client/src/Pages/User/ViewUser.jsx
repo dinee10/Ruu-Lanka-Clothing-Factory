@@ -10,7 +10,7 @@ function ViewUser() {
     useEffect(() => {
         // Fetch the product details including the image URL
         axios
-            .get(`http://localhost:5174/users/${id}`)
+            .get(`http://localhost:5175/users/${id}`)
             .then((result) => {
                 setUser(result.data.user); // Set the fetched product data
             })

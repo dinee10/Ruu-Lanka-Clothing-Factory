@@ -11,7 +11,7 @@ function UpdateDelivery() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:5174/delivery/${id}`)
+        axios.get(`http://localhost:5175/delivery/${id}`)
             .then(result => {
                 setStatus(result.data.deliveries.status);
                 setUpdatedAt(result.data.deliveries.updatedAt);
@@ -51,7 +51,7 @@ function UpdateDelivery() {
             updatedAt
         };
 
-        axios.put(`http://localhost:5174/delivery/${id}`, deliveryData)
+        axios.put(`http://localhost:5175/delivery/${id}`, deliveryData)
             .then(() => {
                 Swal.fire({
                     title: "Successful",

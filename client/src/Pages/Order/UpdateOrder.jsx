@@ -15,7 +15,7 @@ function UpdateOrder() {
 
     useEffect(() => {
         axios
-          .get("http://localhost:5174/order/" + id)
+          .get("http://localhost:5175/order/" + id)
           .then((result) => {
             const order = result.data.order;  // Access order details from result.data.order
             setOrder_id(order.order_id);
@@ -74,7 +74,7 @@ function UpdateOrder() {
         }
     
         axios
-          .put("http://localhost:5174/order/" + id, orderData)
+          .put("http://localhost:5175/order/" + id, orderData)
           .then(() => {
             Swal.fire({
               title: "Updated",

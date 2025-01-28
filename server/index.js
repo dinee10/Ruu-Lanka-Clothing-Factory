@@ -42,6 +42,6 @@ mongoose.connect("mongodb+srv://catalogManager:CatalogManager8@cluster0.6rmpb.mo
     .then(() => console.log('Connected to Product MongoDB Atlas'))
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
-app.listen(5174, () => {
+app.listen(5175, () => {
     console.log("Server is running");
 });

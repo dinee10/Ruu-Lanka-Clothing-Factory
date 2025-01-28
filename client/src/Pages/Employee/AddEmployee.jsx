@@ -71,7 +71,7 @@ function AddEmployee() {
         }
     
         axios
-          .post("http://localhost:5174/employee", employeeData)
+          .post("http://localhost:5175/employee", employeeData)
           .then(() => {
             Swal.fire({
               title: "Successful",

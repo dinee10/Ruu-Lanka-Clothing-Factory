@@ -15,7 +15,7 @@ const CartProduct = ({ product }) => {
                 {/* Product Image */}
                 <div className="col-md-3 d-flex justify-content-center">
                     <img
-                        src={`http://localhost:5174/${product.image}`}
+                        src={`http://localhost:5175/${product.image}`}
                         className="img-fluid rounded-3 shadow-sm"
                         style={{ width: "100px", height: "100px", objectFit: "cover", cursor: "pointer" }}
                         onClick={() => navigate(`/productview/${product._id}`)}

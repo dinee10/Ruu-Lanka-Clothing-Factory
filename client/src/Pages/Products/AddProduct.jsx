@@ -63,7 +63,7 @@ function AddProduct() {
     formData.append("image", image); // Append the image file
 
     axios
-      .post("http://localhost:5174/product", formData, {
+      .post("http://localhost:5175/product", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Important for file uploads
         },

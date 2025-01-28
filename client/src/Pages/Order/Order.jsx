@@ -17,7 +17,7 @@ function Order() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5174/order")
+    axios.get("http://localhost:5175/order")
       .then(result => setOrders(result.data.orders))
       .catch(err => console.log(err));
   }, []);
@@ -32,7 +32,7 @@ function Order() {
     setShowEmailModal(false);
 
     // Use Axios to send the email to the backend
-    axios.post(`http://localhost:5174/order/send-email/${selectedOrder._id}`, { email })
+    axios.post(`http://localhost:5175/order/send-email/${selectedOrder._id}`, { email })
       .then(res => {
         Swal.fire("Email Sent!", "The order details have been sent via email.", "success");
       })
@@ -53,7 +53,7 @@ function Order() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/order/" + id)
+        axios.delete("http://localhost:5175/order/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({

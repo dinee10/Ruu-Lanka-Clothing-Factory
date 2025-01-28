@@ -12,7 +12,7 @@ function Feedback() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:5174/feedback")
+    axios.get("http://localhost:5175/feedback")
       .then(result => setFeedback(result.data.feedback))
       .catch(err => console.log(err));
   }, []);

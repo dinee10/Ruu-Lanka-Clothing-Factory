@@ -18,7 +18,7 @@ function ProductView() {
     useEffect(() => {
         // Fetch the product details including the image URL
         axios
-            .get(`http://localhost:5174/product/${id}`)
+            .get(`http://localhost:5175/product/${id}`)
             .then((result) => {
                 setProduct(result.data.product); // Set the fetched product data
             })
@@ -39,7 +39,7 @@ function ProductView() {
                     <div className="w-100 w-md-50 bg-white mr-3 p-5 rounded shadow-sm mb-4 mb-md-0">
                         <div className="position-relative">
                             <img
-                                src={`http://localhost:5174/${product.image}`}
+                                src={`http://localhost:5175/${product.image}`}
                                 alt={product.name}
                                 className="img-fluid rounded w-100 shadow-lg"
                                 style={{ maxHeight: "500px", objectFit: "cover" }}

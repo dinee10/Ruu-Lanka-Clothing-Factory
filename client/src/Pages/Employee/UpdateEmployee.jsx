@@ -18,7 +18,7 @@ function UpdateEmployee() {
 
     useEffect(() => {
         axios
-          .get("http://localhost:5174/employee/" + id)
+          .get("http://localhost:5175/employee/" + id)
           .then((result) => {
             const employee = result.data.employee;  
             setEmp_id(employee.emp_id);
@@ -88,7 +88,7 @@ function UpdateEmployee() {
         }
     
         axios
-          .put("http://localhost:5174/employee/" + id, employeeData)
+          .put("http://localhost:5175/employee/" + id, employeeData)
           .then(() => {
             Swal.fire({
               title: "Updated",

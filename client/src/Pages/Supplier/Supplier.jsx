@@ -11,7 +11,7 @@ function Supplier() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:5174/supplier")
+    axios.get("http://localhost:5175/supplier")
       .then(result => {
         if (result.data && result.data.suppliers) {
         setSuppliers(result.data.suppliers)
@@ -31,7 +31,7 @@ function Supplier() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/supplier/" + id)
+        axios.delete("http://localhost:5175/supplier/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({

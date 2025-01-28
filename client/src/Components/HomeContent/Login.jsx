@@ -16,7 +16,7 @@ function Login() {
 
         try {
             // Send POST request to login route
-            const response = await axios.post('http://localhost:5174/users/login', {
+            const response = await axios.post('http://localhost:5175/users/login', {
                 email,
                 password,
             });

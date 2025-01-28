@@ -13,14 +13,14 @@ function Salary() {
     useEffect(() => {
         const fetchEmployee = async () => {
             try {
-                const response = await axios.get("http://localhost:5174/employee");
+                const response = await axios.get("http://localhost:5175/employee");
                 setEmployees(response.data.employees || []);
             } catch (err) {
                 console.error("Failed to fetch emploees:", err);
             }
         };
 
-        axios.get("http://localhost:5174/salary")
+        axios.get("http://localhost:5175/salary")
             .then(result => setSalaries(result.data.salaries))
             .catch(err => console.log(err));
 

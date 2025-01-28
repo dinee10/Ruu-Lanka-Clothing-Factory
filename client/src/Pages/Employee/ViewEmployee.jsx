@@ -11,7 +11,7 @@ function ViewEmployee() {
     useEffect(() => {
         // Fetch the product details including the image URL
         axios
-            .get(`http://localhost:5174/employee/${id}`)
+            .get(`http://localhost:5175/employee/${id}`)
             .then((result) => {
                 setEmployee(result.data.employee); // Set the fetched product data
             })

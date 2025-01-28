@@ -20,7 +20,7 @@ function AddDelivery() {
     useEffect(() => {
         const fetchDrivers = async () => {
             try {
-                const response = await axios.get("http://localhost:5174/driver");
+                const response = await axios.get("http://localhost:5175/driver");
                 setDrivers(response.data.drivers || []);
             } catch (err) {
                 console.error("Failed to fetch drivers:", err);
@@ -29,7 +29,7 @@ function AddDelivery() {
         
         const fetchOrders = async () => {
             try {
-                const response = await axios.get("http://localhost:5174/order");
+                const response = await axios.get("http://localhost:5175/order");
                 setOrders(response.data.orders || []);
             } catch (err) {
                 console.error("Failed to fetch orders:", err);
@@ -68,7 +68,7 @@ function AddDelivery() {
         }
 
         try {
-            await axios.post("http://localhost:5174/delivery", {
+            await axios.post("http://localhost:5175/delivery", {
                 ...inputs,
                 assignedAt: new Date(inputs.assignedAt)
             });

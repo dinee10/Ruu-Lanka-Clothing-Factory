@@ -64,7 +64,7 @@ function AddSupplier() {
         }
     
         axios
-          .post("http://localhost:5174/supplier", supplierData)
+          .post("http://localhost:5175/supplier", supplierData)
           .then(() => {
             Swal.fire({
               title: "Successful",

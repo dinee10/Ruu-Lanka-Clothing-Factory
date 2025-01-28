@@ -40,7 +40,7 @@ function AddFeedback() {
     }
 
     axios
-      .post("http://localhost:5174/feedback", feedbackData)
+      .post("http://localhost:5175/feedback", feedbackData)
       .then(() => {
         alert("Feedback Added");
         window.location.reload();

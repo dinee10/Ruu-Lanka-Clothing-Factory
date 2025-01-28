@@ -16,7 +16,7 @@ function UpdateInventory() {
     useEffect(() => {
         const fetchSupplier = async () => {
             try {
-                const response = await axios.get("http://localhost:5174/supplier");
+                const response = await axios.get("http://localhost:5175/supplier");
                 setSuppliers(response.data.suppliers || []);
             } catch (err) {
                 console.error("Failed to fetch suppliers:", err);
@@ -25,7 +25,7 @@ function UpdateInventory() {
         };
     
         axios
-          .get("http://localhost:5174/inventory/" + id)
+          .get("http://localhost:5175/inventory/" + id)
           .then((result) => {
             const inventory = result.data.inventory;  
             setOrder_id(inventory.order_id);
@@ -84,7 +84,7 @@ function UpdateInventory() {
         }
     
         axios
-          .put("http://localhost:5174/inventory/" + id, inventoryData)
+          .put("http://localhost:5175/inventory/" + id, inventoryData)
           .then(() => {
             Swal.fire({
               title: "Updated",

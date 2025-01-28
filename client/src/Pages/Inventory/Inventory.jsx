@@ -11,7 +11,7 @@ function Inventory() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5174/inventory")
+    axios.get("http://localhost:5175/inventory")
       .then(result => {
         if (result.data && result.data.inventories) {
         setInventories(result.data.inventories)
@@ -31,7 +31,7 @@ function Inventory() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/inventory/" + id)
+        axios.delete("http://localhost:5175/inventory/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({

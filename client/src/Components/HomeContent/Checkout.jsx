@@ -58,7 +58,7 @@ function Checkout() {
         }
     
         axios
-          .post("http://localhost:5174/detail", deliveryData)
+          .post("http://localhost:5175/detail", deliveryData)
           .then(() => {
             alert("Details Added");
             //window.location.reload();

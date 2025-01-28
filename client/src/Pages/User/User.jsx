@@ -11,7 +11,7 @@ function User() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:5174/users")
+    axios.get("http://localhost:5175/users")
       .then(result => {
         console.log(result.data); // Check the response structure here
         setUsers(result.data.users);
@@ -31,7 +31,7 @@ function User() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:5174/users/" + id)
+        axios.delete("http://localhost:5175/users/" + id)
           .then(res => {
             console.log(res);
             Swal.fire({
